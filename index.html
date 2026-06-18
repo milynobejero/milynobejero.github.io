@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Professional Website</title>
+    <style>
+        /* ============================================
+           RESET & BASE STYLES
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333333;
+        }
+
+        /* ============================================
+           NAVIGATION BAR - The menu at the top
+           ============================================ */
+        .navbar {
+            background-color: #2c3e50;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .navbar .logo span {
+            color: #3498db;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+        }
+
+        /* ============================================
+           CONTAINER - Keeps content centered
+           ============================================ */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ============================================
+           HERO SECTION - The big welcome area
+           ============================================ */
+        .hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: #ffffff;
+            padding: 150px 0 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-button {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: #ffffff;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hero-button:hover {
+            background-color: #c0392b;
+        }
+
+        /* ============================================
+           SERVICES SECTION - What you offer
+           ============================================ */
+        .services {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: #7f8c8d;
+            margin-bottom: 50px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: #ffffff;
+            padding: 40px 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .service-card p {
+            color: #7f8c8d;
+            font-size: 16px;
+        }
+
+        /* ============================================
+           ABOUT SECTION - About you / your business
+           ============================================ */
+        .about {
+            padding: 80px 0;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .about-text p {
+            font-size: 16px;
+            color: #555555;
+            margin-bottom: 15px;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            height: 400px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        /* ============================================
+           TESTIMONIALS - What customers say
+           ============================================ */
+        .testimonials {
+            padding: 80px 0;
+            background-color: #2c3e50;
+            color: #ffffff;
+        }
+
+        .testimonials .section-title {
+            color: #ffffff;
+        }
+
+        .testimonials .section-subtitle {
+            color: #bdc3c7;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+        }
+
+        .testimonial-card p {
+            font-size: 16px;
+            font-style: italic;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .testimonial-card .author {
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        /* ============================================
+           CONTACT SECTION - How to reach you
+           ============================================ */
+        .contact {
+            padding: 80px 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .contact-info p {
+            font-size: 16px;
+            color: #555555;
+            margin-bottom: 10px;
+        }
+
+        .contact-info .info-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #555555;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            background-color: #3498db;
+            color: #ffffff;
+            padding: 12px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #2980b9;
+        }
+
+        /* ============================================
+           FOOTER - Bottom of the page
+           ============================================ */
+        .footer {
+            background-color: #1a252f;
+            color: #ffffff;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .footer p {
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN - Works on phones too!
+           ============================================ */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================
+         NAVIGATION BAR
+         ========================================== -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">Digital Launch<span> Partner </span></a>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#testimonials">FAQ's</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ==========================================
+         HERO SECTION
+         ========================================== -->
+    <section class="hero">
+        <div class="container">
+            <h1>Hi, I'm Manilyn</h1>
+            <p>I help small businesses look professional online. Let me build you a website that brings in customers.</p>
+            <a href="#contact" class="hero-button">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SERVICES SECTION
+         ========================================== -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">What I Can Do For You</h2>
+            <p class="section-subtitle">Simple solutions that make a big difference</p>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3>Website Design</h3>
+                    <p>Clean, modern websites that look great on phones, tablets, and computers. Your customers will be impressed.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Website Updates</h3>
+                    <p>Need changes to your existing site? I'll update your content, fix issues, and keep things running smoothly.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>Mobile Friendly</h3>
+                    <p>Over 60% of people browse on their phones. Every site I build works perfectly on all screen sizes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         ABOUT SECTION
+         ========================================== -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Me</h2>
+                    <p>I'm a web designer who believes every business deserves a professional online presence — without the crazy prices big agencies charge.</p>
+                    <p>I work directly with you to understand what your business needs, then I build a website that actually helps you get more customers.</p>
+                    <p>No confusing tech talk. No hidden fees. Just a great website that works.</p>
+                </div>
+                <div class="about-image" style="background: none;">
+    <img src="profile.jpg" alt="Your Name" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+</div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <section class="testimonials" id="testimonials">
+    <div class="container">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Have questions? Here are a few quick answers.</p>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p><strong>How long does a website take?</strong><br><br>Most standard business landing pages take between 1 to 2 weeks to complete from start to finish, depending on how quickly content is provided.</p>
+            </div>
+            <div class="testimonial-card">
+                <p><strong>Do I need to buy my own domain?</strong><br><br>Yes, I will guide you through the quick process of purchasing your own domain and hosting so that you completely own your digital property.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- ==========================================
+         CONTACT SECTION
+         ========================================== -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Work Together</h2>
+            <p class="section-subtitle">Send me a message and I'll get back to you within 24 hours</p>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <p>I'd love to hear about your project. Reach out and let's make something great.</p>
+
+                    <div class="info-item">
+                        📧 obejeromanilyn05@gmail.com
+                    </div>
+                    <div class="info-item">
+                        📱 0993-897-1141
+                    </div>
+                    <div class="info-item">
+                        📍 Bohol,Philippines
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <input type="text" placeholder="Manilyn" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <input type="text" placeholder="Subject">
+                    <textarea placeholder="Tell me about your project..."></textarea>
+                    <button type="submit">Send Message</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         FOOTER
+         ========================================== -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 DigitalLaunchPartner. All rights reserved. | Built with care</p>
+        </div>
+    </footer>
+
+</body>
+</html>
